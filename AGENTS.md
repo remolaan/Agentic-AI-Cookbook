@@ -1,7 +1,7 @@
-# AGENTS.md — LangChain Learning Repository
+# AGENTS.md — Agentic AI Cookbook
 
 ## Project purpose
-Educational repo teaching LangChain from beginner to advanced, topic-by-topic. Each `XX_topic_name/` folder is a self-contained lesson with a `README.md` (concepts) and `main.py` (runnable code). All lessons build sequentially but can be run independently.
+Educational repo teaching LangChain + LangGraph from beginner to advanced. 50 topic-by-topic lessons covering LLM basics, RAG, agents, tool calling, state graphs, multi-agent swarms, checkpointing, human-in-the-loop, and production deployment. Each `XX_topic_name/` folder is self-contained with a `README.md` (concepts) and `main.py` (runnable code).
 
 ## LLM provider
 - **DeepSeek Chat** via OpenAI-compatible API: `ChatOpenAI(model="deepseek-chat", base_url="https://api.deepseek.com")`

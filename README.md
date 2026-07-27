@@ -1,6 +1,6 @@
-# LangChain Learning Repository
+# Agentic AI Cookbook
 
-A step-by-step journey through LangChain — from your first LLM call to production-ready deployments.
+A step-by-step journey through LangChain + LangGraph — from your first LLM call to production-ready multi-agent swarms. 50 lessons covering LLM basics, RAG, agents, tool calling, state graphs, checkpointing, human-in-the-loop, and deployment.
 
 ```mermaid
 %%{init: {'theme':'neutral', 'flowchart': {'curve': 'basis'}}}%%
