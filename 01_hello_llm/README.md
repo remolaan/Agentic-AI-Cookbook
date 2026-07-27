@@ -39,6 +39,45 @@ flowchart LR
 2. **Prompt template** — inject variables into a reusable prompt
 3. **Chain** — combine prompt + model into one callable
 
+## Interactive Testing with Gradio
+
+`main_gr.py` gives you a web UI to experiment interactively:
+
+```bash
+python 01_hello_llm/main_gr.py
+# then open http://localhost:7860
+```
+
+### What you can do
+
+| Section | What it shows |
+|---------|---------------|
+| **⚙️ Prompt Settings** (collapsible) | Set the **system prompt** before chatting |
+| **💬 Chat** (always visible) | Type messages, see AI responses |
+| **📤 Raw Prompt** (collapsible) | The **exact messages** object sent to the LLM — every `[SystemMessage]`, `[HumanMessage]`, `[AIMessage]` with full content |
+| **📥 Raw Response** (collapsible) | The **full response object** including `content` and `response_metadata` |
+| **📊 Token Usage** (collapsible) | Prompt tokens, completion tokens, and total (when the provider returns them) |
+
+### Data flow
+
+```mermaid
+flowchart LR
+    SP["⚙️ System Prompt"] --> CHAT["💬 Chat Interface"]
+    CHAT --> BUILD["🧱 Build Messages<br/>System + History + New"]
+    BUILD --> INVOKE["⚡ llm.invoke()"]
+    INVOKE --> RESP["📥 Raw Response"]
+    INVOKE --> TOKENS["📊 Token Usage"]
+    BUILD --> PROMPT["📤 Raw Prompt"]
+    
+    style SP fill:#e3f2fd,stroke:#1565c0
+    style CHAT fill:#fff3e0,stroke:#e65100
+    style BUILD fill:#f3e5f5,stroke:#7b1fa2
+    style INVOKE fill:#fce4ec,stroke:#c62828
+    style PROMPT fill:#e8f5e9,stroke:#2e7d32
+    style RESP fill:#e8f5e9,stroke:#2e7d32
+    style TOKENS fill:#e8f5e9,stroke:#2e7d32
+```
+
 ## Try it yourself
 
-Edit the `topic` variable to ask about different things.
+Edit the `topic` variable in `main.py` to ask about different things, or launch `main_gr.py` to experiment freely.
