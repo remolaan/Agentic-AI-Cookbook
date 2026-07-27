@@ -78,6 +78,39 @@ flowchart LR
     style TOKENS fill:#e8f5e9,stroke:#2e7d32
 ```
 
+## Gradio UI Layout
+
+Here is what the interface looks like when you open `http://localhost:7860`:
+
+```mermaid
+flowchart TB
+    subgraph Settings["⚙️ Prompt Settings (collapsed by default)"]
+        SP["System Prompt textbox"]
+    end
+    
+    subgraph Chat["💬 Chat Interface (always visible)"]
+        direction TB
+        M1["User: Hello!"]
+        M2["AI: Hi! How can I help?"]
+        IN["Message input box"]
+    end
+    
+    subgraph Debug["🔍 Debug Panels (collapsed by default)"]
+        RP["📤 Raw Prompt Sent<br/>Shows exact messages sent to LLM"]
+        RR["📥 Raw Response Received<br/>Shows full response + metadata"]
+        TU["📊 Token Usage<br/>Shows prompt / completion / total tokens"]
+    end
+    
+    Settings --> Chat --> Debug
+    
+    style Settings fill:#e3f2fd,stroke:#1565c0
+    style Chat fill:#fff3e0,stroke:#e65100
+    style Debug fill:#f3e5f5,stroke:#7b1fa2
+    style RP fill:#e8f5e9,stroke:#2e7d32
+    style RR fill:#e8f5e9,stroke:#2e7d32
+    style TU fill:#e8f5e9,stroke:#2e7d32
+```
+
 ## Try it yourself
 
 Edit the `topic` variable in `main.py` to ask about different things, or launch `main_gr.py` to experiment freely.
