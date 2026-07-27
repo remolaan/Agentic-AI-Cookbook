@@ -18,6 +18,7 @@ load_dotenv()
 llm = ChatOpenAI(model="deepseek-chat", base_url="https://api.deepseek.com")
 store = {}
 last_history = []
+last_response = None
 
 
 def get_session(sid):
@@ -27,7 +28,7 @@ def get_session(sid):
 
 
 def chat(message, history, memory_type):
-    global last_history
+    global last_history, last_response
     prompt = ChatPromptTemplate.from_messages([
         MessagesPlaceholder(variable_name="history"),
         ("human", "{input}"),
@@ -43,6 +44,7 @@ def chat(message, history, memory_type):
         {"input": message},
         config={"configurable": {"session_id": memory_type}},
     )
+    last_response = response
     last_history = store[memory_type].messages
     return response.content
 
@@ -64,7 +66,15 @@ with gr.Blocks(title="06 — Memory") as app:
 
     def refresh():
         h = "\n".join(f"[{type(m).__name__}] {m.content[:80]}" for m in last_history) if last_history else ""
-        return h, ""
+        if last_response and hasattr(last_response, "response_metadata"):
+            tu = last_response.response_metadata.get("token_usage", {}) or last_response.response_metadata.get("usage", {})
+            if tu:
+                t = f"Prompt: {tu.get('prompt_tokens', '?')}\nCompletion: {tu.get('completion_tokens', '?')}\nTotal: {tu.get('total_tokens', '?')}"
+            else:
+                t = str(last_response.response_metadata)
+        else:
+            t = ""
+        return h, t
 
     gr.Button("🔄 Refresh Debug Panels").click(fn=refresh, inputs=[], outputs=[history_box, token_box])
     chatbot.chatbot.change(fn=refresh, inputs=[], outputs=[history_box, token_box])
