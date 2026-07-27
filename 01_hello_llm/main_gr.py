@@ -35,7 +35,20 @@ def get_raw_prompt():
     for m in last_prompt:
         role = m["role"].upper()
         lines.append(f"[{role}]")
-        lines.append(m["content"])
+        content = m["content"]
+        if isinstance(content, list):
+            for part in content:
+                if isinstance(part, dict):
+                    lines.append(f"  {part.get('type', '?')}: {str(part.get('text', part.get('image', '')))[:200]}")
+                else:
+                    lines.append(f"  {str(part)[:200]}")
+        elif content is None:
+            lines.append("  (tool call)")
+            if "tool_calls" in m:
+                for tc in m["tool_calls"]:
+                    lines.append(f"  🛠️ {tc.get('function', {}).get('name', '?')}({tc.get('function', {}).get('arguments', '')})")
+        else:
+            lines.append(str(content))
         lines.append("")
     return "\n".join(lines)
 
@@ -44,7 +57,17 @@ def get_raw_response():
     if last_response is None:
         return "No response received yet."
     lines = []
-    lines.append(f"Content: {last_response.content}")
+    content = last_response.content
+    if isinstance(content, list):
+        for part in content:
+            if isinstance(part, dict):
+                lines.append(f"  {part.get('type', '?')}: {str(part.get('text', ''))[:200]}")
+            else:
+                lines.append(f"  {str(part)[:200]}")
+    elif content is None:
+        lines.append("  (tool call response)")
+    else:
+        lines.append(str(content))
     lines.append("")
     lines.append("Response Metadata:")
     if hasattr(last_response, "response_metadata"):
