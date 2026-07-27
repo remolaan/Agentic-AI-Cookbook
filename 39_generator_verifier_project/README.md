@@ -7,8 +7,8 @@ flowchart TD
     G["✍️ Generator"] --> V["🔍 Verifier"]
     V -->|"✅ Pass"| O["Output"]
     V -->|"❌ Fail + feedback"| G
-    style G fill:#e3f2fd
-    style V fill:#fff3e0,stroke:#e65100
+    style G fill:#e3f2fd,color:#000000
+    style V fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

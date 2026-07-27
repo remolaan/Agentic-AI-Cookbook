@@ -25,10 +25,10 @@ flowchart TB
         C["💬 Intercept every event"]
     end
     
-    style S fill:#e3f2fd,stroke:#1565c0
-    style E fill:#e8f5e9,stroke:#2e7d32
-    style ER fill:#fce4ec,stroke:#c62828
-    style C fill:#fff3e0,stroke:#e65100
+    style S fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style E fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style ER fill:#fce4ec,stroke:#c62828,color:#000000
+    style C fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What You'll Learn
@@ -79,8 +79,8 @@ flowchart LR
     L --> CB2["📋 TokenCounter<br/>(on_llm_end)"]
     CB2 --> R["💬 Response"]
     
-    style CB fill:#e3f2fd
-    style CB2 fill:#e3f2fd
+    style CB fill:#e3f2fd,color:#000000
+    style CB2 fill:#e3f2fd,color:#000000
 ```
 
 ### 2. Streaming Tokens
@@ -110,10 +110,10 @@ flowchart LR
         T4
     end
     
-    style T1 fill:#e3f2fd
-    style T2 fill:#e3f2fd
-    style T3 fill:#e3f2fd
-    style T4 fill:#e3f2fd
+    style T1 fill:#e3f2fd,color:#000000
+    style T2 fill:#e3f2fd,color:#000000
+    style T3 fill:#e3f2fd,color:#000000
+    style T4 fill:#e3f2fd,color:#000000
 ```
 
 **Without streaming (blocking):** Wait 10 seconds → see full response at once

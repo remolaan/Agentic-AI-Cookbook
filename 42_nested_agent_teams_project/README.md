@@ -14,8 +14,8 @@ flowchart TD
         C["Child Agent"] --> CT["Child Tools"]
         CT --> C
     end
-    style P fill:#f3e5f5,stroke:#7b1fa2
-    style T fill:#fff3e0,stroke:#e65100
+    style P fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style T fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

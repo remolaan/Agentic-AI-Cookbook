@@ -11,10 +11,10 @@ flowchart TD
     C --> O["📤 Final output"]
     W --> O
     A --> O
-    style R fill:#f3e5f5,stroke:#7b1fa2
-    style C fill:#e3f2fd
-    style W fill:#e8f5e9
-    style A fill:#fff3e0
+    style R fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style C fill:#e3f2fd,color:#000000
+    style W fill:#e8f5e9,color:#000000
+    style A fill:#fff3e0,color:#000000
 ```
 
 ## What you'll build

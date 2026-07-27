@@ -7,9 +7,9 @@ An LLM (Large Language Model) takes text input (a **prompt**) and returns text o
 ```mermaid
 flowchart LR
     P["📝 Your Prompt<br/>'What is LangChain?'"] --> M["🤖 DeepSeek LLM"] --> R["💬 Response<br/>'LangChain is a framework...'"]
-    style P fill:#e3f2fd,stroke:#1565c0
-    style M fill:#fff3e0,stroke:#e65100
-    style R fill:#e8f5e9,stroke:#2e7d32
+    style P fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style M fill:#fff3e0,stroke:#e65100,color:#000000
+    style R fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What you'll learn
@@ -69,13 +69,13 @@ flowchart LR
     INVOKE --> TOKENS["📊 Token Usage"]
     BUILD --> PROMPT["📤 Raw Prompt"]
     
-    style SP fill:#e3f2fd,stroke:#1565c0
-    style CHAT fill:#fff3e0,stroke:#e65100
-    style BUILD fill:#f3e5f5,stroke:#7b1fa2
-    style INVOKE fill:#fce4ec,stroke:#c62828
-    style PROMPT fill:#e8f5e9,stroke:#2e7d32
-    style RESP fill:#e8f5e9,stroke:#2e7d32
-    style TOKENS fill:#e8f5e9,stroke:#2e7d32
+    style SP fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style CHAT fill:#fff3e0,stroke:#e65100,color:#000000
+    style BUILD fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style INVOKE fill:#fce4ec,stroke:#c62828,color:#000000
+    style PROMPT fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style RESP fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style TOKENS fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Gradio UI Layout
@@ -103,12 +103,12 @@ flowchart TB
     
     Settings --> Chat --> Debug
     
-    style Settings fill:#e3f2fd,stroke:#1565c0
-    style Chat fill:#fff3e0,stroke:#e65100
-    style Debug fill:#f3e5f5,stroke:#7b1fa2
-    style RP fill:#e8f5e9,stroke:#2e7d32
-    style RR fill:#e8f5e9,stroke:#2e7d32
-    style TU fill:#e8f5e9,stroke:#2e7d32
+    style Settings fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style Chat fill:#fff3e0,stroke:#e65100,color:#000000
+    style Debug fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style RP fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style RR fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style TU fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Try it yourself

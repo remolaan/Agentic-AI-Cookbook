@@ -12,10 +12,10 @@ flowchart LR
     S2 --> P2["📤 Only node outputs"]
     G --> S3["stream(mode='messages')"]
     S3 --> P3["📤 Token by token"]
-    style G fill:#e3f2fd,stroke:#1565c0
-    style S fill:#fff3e0,stroke:#e65100
-    style S2 fill:#fff3e0,stroke:#e65100
-    style S3 fill:#fff3e0,stroke:#e65100
+    style G fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style S fill:#fff3e0,stroke:#e65100,color:#000000
+    style S2 fill:#fff3e0,stroke:#e65100,color:#000000
+    style S3 fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll learn

@@ -13,8 +13,8 @@ flowchart TD
     I2 -->|"✅ Resume"| C
     I1 -->|"❌ Reject"| E["END"]
     I2 -->|"❌ Reject"| E
-    style I1 fill:#fff3e0,stroke:#e65100
-    style I2 fill:#fff3e0,stroke:#e65100
+    style I1 fill:#fff3e0,stroke:#e65100,color:#000000
+    style I2 fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

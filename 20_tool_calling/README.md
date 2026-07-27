@@ -24,7 +24,7 @@ flowchart LR
     T --> R["📤 Tool result"]
     R --> M
     
-    style Q fill:#fff3e0,stroke:#e65100
-    style A fill:#e8f5e9,stroke:#2e7d32
-    style T fill:#fce4ec,stroke:#c62828
+    style Q fill:#fff3e0,stroke:#e65100,color:#000000
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style T fill:#fce4ec,stroke:#c62828,color:#000000
 ```

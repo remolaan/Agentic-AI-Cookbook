@@ -10,8 +10,8 @@ flowchart TD
     V -->|"✅ Good"| O["Output"]
     V -->|"❌ Bad"| RQ["🔄 Refine query"]
     RQ --> R
-    style V fill:#fff3e0,stroke:#e65100
-    style RQ fill:#f3e5f5,stroke:#7b1fa2
+    style V fill:#fff3e0,stroke:#e65100,color:#000000
+    style RQ fill:#f3e5f5,stroke:#7b1fa2,color:#000000
 ```
 
 ## What you'll build

@@ -11,9 +11,9 @@ flowchart TD
     C -->|"negative"| N["Negative handler"]
     P --> E["END"]
     N --> E
-    style C fill:#fff3e0,stroke:#e65100
-    style P fill:#e8f5e9,stroke:#2e7d32
-    style N fill:#fce4ec,stroke:#c62828
+    style C fill:#fff3e0,stroke:#e65100,color:#000000
+    style P fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style N fill:#fce4ec,stroke:#c62828,color:#000000
 ```
 
 ## What you'll learn

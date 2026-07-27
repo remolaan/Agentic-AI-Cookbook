@@ -13,9 +13,9 @@ flowchart TD
     R --> C
     C --> M["💾 Store in memory"]
     M --> O["📄 Final report"]
-    style S fill:#f3e5f5,stroke:#7b1fa2
-    style C fill:#fff3e0,stroke:#e65100
-    style M fill:#e3f2fd
+    style S fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style C fill:#fff3e0,stroke:#e65100,color:#000000
+    style M fill:#e3f2fd,color:#000000
 ```
 
 ## What you'll build

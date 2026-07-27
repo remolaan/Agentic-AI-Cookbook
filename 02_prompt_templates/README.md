@@ -13,11 +13,11 @@ flowchart LR
     C --> D["🤖 LLM<br/>DeepSeek Chat"]
     D --> E["💬 Response"]
     
-    style A fill:#fff3e0,stroke:#e65100
-    style B fill:#e3f2fd,stroke:#1565c0
-    style C fill:#fce4ec,stroke:#c62828
-    style D fill:#f3e5f5,stroke:#7b1fa2
-    style E fill:#e8f5e9,stroke:#2e7d32
+    style A fill:#fff3e0,stroke:#e65100,color:#000000
+    style B fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style C fill:#fce4ec,stroke:#c62828,color:#000000
+    style D fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style E fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -48,8 +48,8 @@ flowchart LR
     I --> P["📄 Rendered Messages"]
     P --> M["🤖 LLM"]
     M --> O["💬 Output"]
-    style T fill:#fff3e0
-    style M fill:#f3e5f5
+    style T fill:#fff3e0,color:#000000
+    style M fill:#f3e5f5,color:#000000
 ```
 
 ### 2. String PromptTemplate (simpler)
@@ -80,9 +80,9 @@ flowchart LR
     Q["❓ New Input"] --> P
     P --> M["🤖 LLM"]
     M --> S["🏷️ Sentiment"]
-    style E fill:#e3f2fd
-    style P fill:#fff3e0
-    style M fill:#f3e5f5
+    style E fill:#e3f2fd,color:#000000
+    style P fill:#fff3e0,color:#000000
+    style M fill:#f3e5f5,color:#000000
 ```
 
 ## Key Concept: The `|` Operator (LCEL)

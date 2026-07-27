@@ -9,9 +9,9 @@ flowchart TD
     N["Node returns<br/>Command(goto='next', update={...})"]
     N --> U["✏️ State updated"]
     N --> G["➡️ Graph jumps to 'next'"]
-    style N fill:#f3e5f5,stroke:#7b1fa2
-    style U fill:#e3f2fd
-    style G fill:#fff3e0
+    style N fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style U fill:#e3f2fd,color:#000000
+    style G fill:#fff3e0,color:#000000
 ```
 
 ## What you'll learn

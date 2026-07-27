@@ -14,10 +14,10 @@ flowchart TD
     P2 --> J
     P3 --> J
     J --> E["END"]
-    style F fill:#f3e5f5,stroke:#7b1fa2
-    style P1 fill:#e3f2fd
-    style P2 fill:#e3f2fd
-    style P3 fill:#e3f2fd
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style P1 fill:#e3f2fd,color:#000000
+    style P2 fill:#e3f2fd,color:#000000
+    style P3 fill:#e3f2fd,color:#000000
 ```
 
 ## What you'll learn

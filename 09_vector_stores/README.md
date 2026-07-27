@@ -22,12 +22,12 @@ flowchart TB
     QE --> VS
     VS --> R["🔍 Top Matches<br/>1. 'Embeddings convert text...'<br/>2. 'LangChain is a...'"]
     
-    style D1 fill:#e3f2fd
-    style D2 fill:#e3f2fd
-    style D3 fill:#e3f2fd
-    style VS fill:#f3e5f5,stroke:#7b1fa2
-    style Q fill:#fff3e0,stroke:#e65100
-    style R fill:#e8f5e9,stroke:#2e7d32
+    style D1 fill:#e3f2fd,color:#000000
+    style D2 fill:#e3f2fd,color:#000000
+    style D3 fill:#e3f2fd,color:#000000
+    style VS fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style Q fill:#fff3e0,stroke:#e65100,color:#000000
+    style R fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -66,7 +66,7 @@ vectorstore = Chroma.from_documents(documents, embeddings)
 flowchart LR
     D["📦 Documents"] --> E["🔢 Embeddings"]
     E --> V["🗄️ Vector Store"]
-    style V fill:#f3e5f5
+    style V fill:#f3e5f5,color:#000000
 ```
 
 ### 3. Similarity Search

@@ -11,8 +11,8 @@ flowchart LR
     R --> API
     P --> API
     API --> C
-    style API fill:#e3f2fd,stroke:#1565c0
-    style S fill:#f3e5f5,stroke:#7b1fa2
+    style API fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style S fill:#f3e5f5,stroke:#7b1fa2,color:#000000
 ```
 
 ## What you'll build

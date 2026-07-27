@@ -25,13 +25,13 @@ flowchart TB
         C3 --> R4["💬 '299,792,458 m/s'<br/>⚡ Instant!"]
     end
     
-    style L1 fill:#fce4ec
-    style L2 fill:#fce4ec
-    style L3 fill:#e8f5e9
-    style C1 fill:#fff3e0
-    style C2 fill:#e8f5e9
-    style C3 fill:#e8f5e9,stroke:#2e7d32
-    style R4 fill:#e8f5e9
+    style L1 fill:#fce4ec,color:#000000
+    style L2 fill:#fce4ec,color:#000000
+    style L3 fill:#e8f5e9,color:#000000
+    style C1 fill:#fff3e0,color:#000000
+    style C2 fill:#e8f5e9,color:#000000
+    style C3 fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style R4 fill:#e8f5e9,color:#000000
 ```
 
 ## What You'll Learn
@@ -81,9 +81,9 @@ flowchart LR
     L --> C
     L --> R2["💬 Fresh Response"]
     
-    style C fill:#e3f2fd,stroke:#1565c0
-    style R fill:#e8f5e9,stroke:#2e7d32
-    style L fill:#fce4ec,stroke:#c62828
+    style C fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style R fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style L fill:#fce4ec,stroke:#c62828,color:#000000
 ```
 
 ## How Cache Keys Work

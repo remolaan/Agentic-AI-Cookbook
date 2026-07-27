@@ -11,8 +11,8 @@ flowchart TD
     D --> G["🤖 Generate answer"]
     W --> G
     S --> G
-    style R fill:#f3e5f5,stroke:#7b1fa2
-    style G fill:#e8f5e9,stroke:#2e7d32
+    style R fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style G fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What you'll build

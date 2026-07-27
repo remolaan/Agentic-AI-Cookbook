@@ -47,11 +47,11 @@ flowchart TB
     VS --> M["🔀 Merge & Deduplicate"]
     M --> R["📄 Top Results"]
     
-    style Q fill:#fff3e0,stroke:#e65100
-    style LLM fill:#f3e5f5,stroke:#7b1fa2
-    style VS fill:#e3f2fd,stroke:#1565c0
-    style M fill:#fce4ec,stroke:#c62828
-    style R fill:#e8f5e9,stroke:#2e7d32
+    style Q fill:#fff3e0,stroke:#e65100,color:#000000
+    style LLM fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style VS fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style M fill:#fce4ec,stroke:#c62828,color:#000000
+    style R fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 **Why it helps:** A user might ask "Tell me about Python" — your documents might use "Python programming" or "Python language". Multiple queries cover different phrasings.
@@ -83,11 +83,11 @@ flowchart LR
     Q --> VS
     VS --> R["📄 Results<br/>(only pre-2000 docs)"]
     
-    style Q fill:#fff3e0
-    style LLM fill:#f3e5f5
-    style F fill:#e3f2fd
-    style VS fill:#fce4ec
-    style R fill:#e8f5e9
+    style Q fill:#fff3e0,color:#000000
+    style LLM fill:#f3e5f5,color:#000000
+    style F fill:#e3f2fd,color:#000000
+    style VS fill:#fce4ec,color:#000000
+    style R fill:#e8f5e9,color:#000000
 ```
 
 **Why it matters:** Without SelfQuery, "languages before 2000" would return any document about languages, and you'd need to filter manually. SelfQuery does it in one step.
@@ -114,9 +114,9 @@ flowchart LR
     B["Basic Search<br/>One query, one pass"] --> M["🚀 Advanced Search<br/>Multi-query / Filters / Ensemble"]
     M --> R["🎯 Better Recall<br/>+ Better Precision"]
     
-    style B fill:#fce4ec
-    style M fill:#e3f2fd
-    style R fill:#e8f5e9
+    style B fill:#fce4ec,color:#000000
+    style M fill:#e3f2fd,color:#000000
+    style R fill:#e8f5e9,color:#000000
 ```
 
 The best single retriever is good. **Combining strategies is better.**

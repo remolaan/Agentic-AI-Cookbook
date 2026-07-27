@@ -14,7 +14,7 @@ flowchart LR
     end
     G -->|"search()"| S
     G -->|"put()"| S
-    style S fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style S fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000000
 ```
 
 ## What you'll learn

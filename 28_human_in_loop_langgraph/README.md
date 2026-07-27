@@ -10,7 +10,7 @@ flowchart TD
     I -->|"User approves"| T["🛠️ ToolNode runs"]
     I -->|"User rejects"| E["END"]
     T --> A
-    style I fill:#fff3e0,stroke:#e65100,stroke-width:3px
+    style I fill:#fff3e0,stroke:#e65100,stroke-width:3px,color:#000000
 ```
 
 ## What you'll learn

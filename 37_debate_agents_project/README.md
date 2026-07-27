@@ -9,9 +9,9 @@ flowchart TB
     P1 --> J["⚖️ Judge"]
     P2 --> J
     J --> V["🏆 Verdict"]
-    style P1 fill:#e8f5e9
-    style P2 fill:#fce4ec
-    style J fill:#fff3e0,stroke:#e65100
+    style P1 fill:#e8f5e9,color:#000000
+    style P2 fill:#fce4ec,color:#000000
+    style J fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

@@ -23,12 +23,12 @@ flowchart TB
         B3["RunnablePassthrough.assign(...)"]
     end
     
-    style A1 fill:#fce4ec
-    style A2 fill:#fce4ec
-    style A3 fill:#fce4ec
-    style B1 fill:#e8f5e9,stroke:#2e7d32
-    style B2 fill:#e8f5e9,stroke:#2e7d32
-    style B3 fill:#e8f5e9,stroke:#2e7d32
+    style A1 fill:#fce4ec,color:#000000
+    style A2 fill:#fce4ec,color:#000000
+    style A3 fill:#fce4ec,color:#000000
+    style B1 fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style B2 fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style B3 fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -56,8 +56,8 @@ flowchart LR
     P --> D["📦 {'input': 'Hello!'}"]
     D --> T["📝 Template: 'Say: {input}'"]
     
-    style P fill:#e3f2fd
-    style D fill:#fff3e0
+    style P fill:#e3f2fd,color:#000000
+    style D fill:#fff3e0,color:#000000
 ```
 
 ### 2. RunnableParallel — Run in Parallel
@@ -80,10 +80,10 @@ flowchart LR
     S --> O["📤 Output<br/>{summary: '...',<br/> translation: '...'}"]
     T --> O
     
-    style P fill:#f3e5f5,stroke:#7b1fa2
-    style S fill:#e3f2fd
-    style T fill:#e3f2fd
-    style O fill:#e8f5e9,stroke:#2e7d32
+    style P fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style S fill:#e3f2fd,color:#000000
+    style T fill:#e3f2fd,color:#000000
+    style O fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ### 3. `.assign()` — Add Computed Fields
@@ -106,9 +106,9 @@ flowchart LR
     A --> O["📤 {topic: 'programming',<br/>poem: '...verse...'}"]
     G --> O
     
-    style A fill:#e3f2fd
-    style G fill:#f3e5f5
-    style O fill:#e8f5e9
+    style A fill:#e3f2fd,color:#000000
+    style G fill:#f3e5f5,color:#000000
+    style O fill:#e8f5e9,color:#000000
 ```
 
 ## Key Concept: Everything is a Runnable

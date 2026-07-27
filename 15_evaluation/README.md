@@ -22,11 +22,11 @@ flowchart TB
     S --> F["💡 Feedback<br/>'Too verbose' or 'Correct'"]
     F --> P
     
-    style P fill:#e3f2fd,stroke:#1565c0
-    style L fill:#f3e5f5,stroke:#7b1fa2
-    style E fill:#fff3e0,stroke:#e65100
-    style S fill:#fce4ec,stroke:#c62828
-    style D fill:#e8f5e9,stroke:#2e7d32
+    style P fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style L fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style E fill:#fff3e0,stroke:#e65100,color:#000000
+    style S fill:#fce4ec,stroke:#c62828,color:#000000
+    style D fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -81,11 +81,11 @@ flowchart LR
     R["✅ Reference<br/>'Python is a<br/>programming language.'"] --> E
     E --> S["📊 Score: 0.0<br/>(incorrect)"]
     
-    style LLM fill:#f3e5f5
-    style P fill:#fce4ec
-    style R fill:#e8f5e9
-    style E fill:#fff3e0
-    style S fill:#fce4ec
+    style LLM fill:#f3e5f5,color:#000000
+    style P fill:#fce4ec,color:#000000
+    style R fill:#e8f5e9,color:#000000
+    style E fill:#fff3e0,color:#000000
+    style S fill:#fce4ec,color:#000000
 ```
 
 ### 3. Test Loop — Run Multiple Cases

@@ -10,8 +10,8 @@ flowchart TD
     A -->|"escalate"| H["👤 Human Agent"]
     A -->|"create_ticket"| T["🎫 Ticketing Tool"]
     A -->|"process_refund"| R["💰 Refund Tool"]
-    style A fill:#e3f2fd,stroke:#1565c0
-    style H fill:#fff3e0,stroke:#e65100
+    style A fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style H fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

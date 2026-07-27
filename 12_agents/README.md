@@ -16,9 +16,9 @@ flowchart TD
     TN --> A
     T -->|"No"| R["✅ Final Answer"]
     
-    style A fill:#e3f2fd,stroke:#1565c0
-    style TN fill:#fff3e0,stroke:#e65100
-    style R fill:#e8f5e9,stroke:#2e7d32
+    style A fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style TN fill:#fff3e0,stroke:#e65100,color:#000000
+    style R fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What you'll learn

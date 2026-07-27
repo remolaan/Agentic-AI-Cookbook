@@ -27,10 +27,10 @@ flowchart TB
     LLM --> API
     API --> JS["💬 JSON Response"]
     
-    style API fill:#f3e5f5,stroke:#7b1fa2
-    style LLM fill:#fce4ec,stroke:#c62828
-    style JS fill:#e8f5e9,stroke:#2e7d32
-    style U fill:#e3f2fd,stroke:#1565c0
+    style API fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style LLM fill:#fce4ec,stroke:#c62828,color:#000000
+    style JS fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style U fill:#e3f2fd,stroke:#1565c0,color:#000000
 ```
 
 ## What You'll Learn
@@ -101,10 +101,10 @@ flowchart LR
     S --> S2["❤️ /health endpoint<br/>(health check)"]
     S --> SW["📚 Swagger UI<br/>/docs"]
     
-    style S fill:#f3e5f5,stroke:#7b1fa2
-    style S1 fill:#e3f2fd
-    style S2 fill:#e8f5e9
-    style SW fill:#e3f2fd
+    style S fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style S1 fill:#e3f2fd,color:#000000
+    style S2 fill:#e8f5e9,color:#000000
+    style SW fill:#e3f2fd,color:#000000
 ```
 
 ### Docker Deployment

@@ -12,9 +12,9 @@ flowchart TD
     W --> R
     K --> R
     R --> G["🤖 Generate"]
-    style F fill:#f3e5f5,stroke:#7b1fa2
-    style R fill:#fff3e0,stroke:#e65100
-    style G fill:#e8f5e9,stroke:#2e7d32
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style R fill:#fff3e0,stroke:#e65100,color:#000000
+    style G fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What you'll build

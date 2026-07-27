@@ -24,11 +24,11 @@ flowchart LR
     A --> H2["👤 Next Human<br/>Message"]
     H2 --> C
     
-    style S fill:#e3f2fd,stroke:#1565c0
-    style H fill:#fff3e0,stroke:#e65100
-    style H2 fill:#fff3e0,stroke:#e65100
-    style C fill:#f3e5f5,stroke:#7b1fa2
-    style A fill:#e8f5e9,stroke:#2e7d32
+    style S fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style H fill:#fff3e0,stroke:#e65100,color:#000000
+    style H2 fill:#fff3e0,stroke:#e65100,color:#000000
+    style C fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -60,10 +60,10 @@ flowchart LR
     S["⚙️ System: 'Be sarcastic'"] --> M["🤖 Chat Model"]
     H["👤 Human: 'What is the<br/>meaning of life?'"] --> M
     M --> A["💬 'To make you<br/>wait for coffee'"]
-    style S fill:#e3f2fd
-    style H fill:#fff3e0
-    style M fill:#f3e5f5
-    style A fill:#e8f5e9
+    style S fill:#e3f2fd,color:#000000
+    style H fill:#fff3e0,color:#000000
+    style M fill:#f3e5f5,color:#000000
+    style A fill:#e8f5e9,color:#000000
 ```
 
 ### 2. Multi-Turn Conversation (maintaining history)
@@ -104,10 +104,10 @@ flowchart TB
         L2 --> R2["AIMessage"]
     end
     
-    style M1 fill:#e3f2fd
-    style M2 fill:#e3f2fd
-    style L1 fill:#f3e5f5
-    style L2 fill:#f3e5f5
+    style M1 fill:#e3f2fd,color:#000000
+    style M2 fill:#e3f2fd,color:#000000
+    style L1 fill:#f3e5f5,color:#000000
+    style L2 fill:#f3e5f5,color:#000000
 ```
 
 Each LLM call is standalone. If you don't send the history, the model forgets everything from the last turn.

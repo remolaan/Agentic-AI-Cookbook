@@ -35,12 +35,12 @@ flowchart TB
         S3 --> S4["..."]
     end
     
-    style W1 fill:#fce4ec
-    style W2 fill:#fce4ec
-    style P1 fill:#e3f2fd,stroke:#1565c0
-    style S1 fill:#e8f5e9
-    style S2 fill:#e8f5e9
-    style S3 fill:#e8f5e9
+    style W1 fill:#fce4ec,color:#000000
+    style W2 fill:#fce4ec,color:#000000
+    style P1 fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style S1 fill:#e8f5e9,color:#000000
+    style S2 fill:#e8f5e9,color:#000000
+    style S3 fill:#e8f5e9,color:#000000
 ```
 
 ## What You'll Learn
@@ -85,8 +85,8 @@ flowchart LR
     L -->|"Token 2"| P
     L -->|"Token 3"| P
     
-    style AS fill:#e3f2fd
-    style L fill:#f3e5f5
+    style AS fill:#e3f2fd,color:#000000
+    style L fill:#f3e5f5,color:#000000
 ```
 
 ### 3. Parallel Async Calls — `asyncio.gather()`
@@ -115,10 +115,10 @@ flowchart TB
     T3 --> W
     W --> R["📤 All 3 results"]
     
-    style T1 fill:#e3f2fd
-    style T2 fill:#fff3e0
-    style T3 fill:#f3e5f5
-    style W fill:#e8f5e9,stroke:#2e7d32
+    style T1 fill:#e3f2fd,color:#000000
+    style T2 fill:#fff3e0,color:#000000
+    style T3 fill:#f3e5f5,color:#000000
+    style W fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Key Concept: Streaming is Built Into LCEL

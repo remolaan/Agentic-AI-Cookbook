@@ -11,9 +11,9 @@ flowchart TD
     T1 --> J["📋 Join"]
     T2 --> J
     J --> F["🤖 Final response"]
-    style A fill:#e3f2fd
-    style D fill:#f3e5f5,stroke:#7b1fa2
-    style J fill:#fff3e0,stroke:#e65100
+    style A fill:#e3f2fd,color:#000000
+    style D fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style J fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

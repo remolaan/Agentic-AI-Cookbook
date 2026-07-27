@@ -12,7 +12,7 @@ flowchart LR
     M --> S["with_structured_output(PydanticModel)"]
     S --> O["✅ Validated Python object"]
     
-    style M fill:#e3f2fd,stroke:#1565c0
-    style S fill:#f3e5f5,stroke:#7b1fa2
-    style O fill:#e8f5e9,stroke:#2e7d32
+    style M fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style S fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style O fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```

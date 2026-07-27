@@ -9,8 +9,8 @@ flowchart LR
     S["START"] --> A["Node A<br/>capitalize text"]
     A --> B["Node B<br/>add punctuation"]
     B --> E["END"]
-    style S fill:#e8f5e9
-    style E fill:#fce4ec
+    style S fill:#e8f5e9,color:#000000
+    style E fill:#fce4ec,color:#000000
 ```
 
 ## What you'll learn

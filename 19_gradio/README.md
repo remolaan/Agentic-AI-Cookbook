@@ -11,8 +11,8 @@ flowchart LR
     C --> D["🤖 LLM Responds"]
     D --> B
     
-    style A fill:#e3f2fd,stroke:#1565c0
-    style B fill:#fff3e0,stroke:#e65100
+    style A fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style B fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll learn

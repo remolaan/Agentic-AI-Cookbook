@@ -13,9 +13,9 @@ flowchart TD
     subgraph "Subgraph (hidden inside)"
         V["Validate"] --> CAP["Capitalize"]
     end
-    style SUB fill:#f3e5f5,stroke:#7b1fa2
-    style V fill:#e3f2fd
-    style CAP fill:#e3f2fd
+    style SUB fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style V fill:#e3f2fd,color:#000000
+    style CAP fill:#e3f2fd,color:#000000
 ```
 
 ## What you'll learn

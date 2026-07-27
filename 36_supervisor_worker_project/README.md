@@ -10,10 +10,10 @@ flowchart TD
     W1 --> J["📋 Join/Compile"]
     W2 --> J
     J --> R["✅ Final Report"]
-    style S fill:#f3e5f5,stroke:#7b1fa2
-    style W1 fill:#e3f2fd
-    style W2 fill:#e3f2fd
-    style J fill:#fff3e0
+    style S fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style W1 fill:#e3f2fd,color:#000000
+    style W2 fill:#e3f2fd,color:#000000
+    style J fill:#fff3e0,color:#000000
 ```
 
 ## What you'll build

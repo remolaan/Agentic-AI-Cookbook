@@ -14,8 +14,8 @@ flowchart TD
     W3 --> C
     W4 --> C
     C --> R["📤 Final merged result"]
-    style F fill:#f3e5f5,stroke:#7b1fa2
-    style C fill:#fff3e0,stroke:#e65100
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style C fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll build

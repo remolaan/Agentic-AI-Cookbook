@@ -24,12 +24,12 @@ flowchart TB
         L4 --> R4["💬 'You said Alice!'"]
     end
 
-    style L1 fill:#fce4ec,stroke:#c62828
-    style L2 fill:#fce4ec,stroke:#c62828
-    style L3 fill:#e8f5e9,stroke:#2e7d32
-    style L4 fill:#e8f5e9,stroke:#2e7d32
-    style MH1 fill:#e3f2fd,stroke:#1565c0
-    style MH2 fill:#e3f2fd,stroke:#1565c0
+    style L1 fill:#fce4ec,stroke:#c62828,color:#000000
+    style L2 fill:#fce4ec,stroke:#c62828,color:#000000
+    style L3 fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style L4 fill:#e8f5e9,stroke:#2e7d32,color:#000000
+    style MH1 fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style MH2 fill:#e3f2fd,stroke:#1565c0,color:#000000
 ```
 
 ## What You'll Learn
@@ -51,9 +51,9 @@ flowchart LR
     W --> H["📁 History Store<br/>ChatMessageHistory"]
     H -.-> P
     
-    style P fill:#e3f2fd,stroke:#1565c0
-    style W fill:#f3e5f5,stroke:#7b1fa2
-    style H fill:#fff3e0,stroke:#e65100
+    style P fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style W fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style H fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ### Step 1: Add a history slot in your prompt
@@ -121,8 +121,8 @@ flowchart LR
     T1["Turn 1<br/>Hi I'm Alice"] --> H1["📁 History<br/>H: Hi I'm Alice<br/>AI: Hello Alice!"]
     T2["Turn 2<br/>What's my name?"] --> H2["📁 History<br/>H: Hi I'm Alice<br/>AI: Hello Alice!<br/>H: What's my name?<br/>AI: You're Alice!"]
     
-    style H1 fill:#e3f2fd
-    style H2 fill:#e3f2fd
+    style H1 fill:#e3f2fd,color:#000000
+    style H2 fill:#e3f2fd,color:#000000
 ```
 
 ### 2. Window Memory — Sliding Window
@@ -144,10 +144,10 @@ flowchart LR
         T2["Turn 2"] --> T3["Turn 3"] --> P["📝 Prompt<br/>(last 2 turns only)"]
         T1["Turn 1<br/>(dropped!)"] -.-> P
     end
-    style T1 fill:#fce4ec,stroke:#c62828
-    style T2 fill:#e3f2fd,stroke:#1565c0
-    style T3 fill:#e3f2fd,stroke:#1565c0
-    style P fill:#fff3e0,stroke:#e65100
+    style T1 fill:#fce4ec,stroke:#c62828,color:#000000
+    style T2 fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style T3 fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style P fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ### 3. Summary Memory — Manual Summarization
@@ -160,8 +160,8 @@ flowchart LR
     B --> C["📄 Summary: 'User likes hiking and coffee'"]
     C --> D["📝 Injected into next prompt"]
     
-    style B fill:#f3e5f5,stroke:#7b1fa2
-    style C fill:#e3f2fd,stroke:#1565c0
+    style B fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style C fill:#e3f2fd,stroke:#1565c0,color:#000000
 ```
 
 ## Key Concept: History is Just Prompt Injection
@@ -175,9 +175,9 @@ flowchart LR
     P --> L["🤖 LLM sees full history"]
     L --> R["💬 'You're Alice!'"]
     
-    style M fill:#e3f2fd,stroke:#1565c0
-    style P fill:#fff3e0,stroke:#e65100
-    style L fill:#e8f5e9,stroke:#2e7d32
+    style M fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style P fill:#fff3e0,stroke:#e65100,color:#000000
+    style L fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Summary

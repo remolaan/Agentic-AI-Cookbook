@@ -13,11 +13,11 @@ flowchart LR
     M --> R["🔧 Output Parser<br/>(clean/structure)"]
     R --> A["✅ Answer"]
     
-    style Q fill:#fff3e0,stroke:#e65100
-    style P fill:#e3f2fd,stroke:#1565c0
-    style M fill:#fce4ec,stroke:#c62828
-    style R fill:#f3e5f5,stroke:#7b1fa2
-    style A fill:#e8f5e9,stroke:#2e7d32
+    style Q fill:#fff3e0,stroke:#e65100,color:#000000
+    style P fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style M fill:#fce4ec,stroke:#c62828,color:#000000
+    style R fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Modern Approach: LCEL (`|`)
@@ -80,8 +80,8 @@ flowchart LR
     L --> C2["Tagline Chain<br/>prompt | llm | parser"]
     C2 --> O2["💬 'Purrs & Pour-overs'"]
     
-    style C1 fill:#e3f2fd,stroke:#1565c0
-    style C2 fill:#fff3e0,stroke:#e65100
+    style C1 fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style C2 fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ### 3. Multi-Output Chain — `RunnablePassthrough.assign()`

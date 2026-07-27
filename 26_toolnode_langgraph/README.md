@@ -10,8 +10,8 @@ flowchart TD
     T -->|"Yes"| TN["🛠️ ToolNode<br/>runs tools in parallel"]
     TN --> A
     T -->|"No"| E["END"]
-    style A fill:#e3f2fd,stroke:#1565c0
-    style TN fill:#fff3e0,stroke:#e65100
+    style A fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style TN fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll learn

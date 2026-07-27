@@ -11,8 +11,8 @@ flowchart LR
         C1 --> T2["Turn 2"]
         T2 --> C2["💾 Checkpoint"]
     end
-    style C1 fill:#fff3e0,stroke:#e65100
-    style C2 fill:#fff3e0,stroke:#e65100
+    style C1 fill:#fff3e0,stroke:#e65100,color:#000000
+    style C2 fill:#fff3e0,stroke:#e65100,color:#000000
 ```
 
 ## What you'll learn

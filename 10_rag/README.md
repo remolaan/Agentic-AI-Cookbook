@@ -26,15 +26,15 @@ flowchart TB
         G --> ANS["✅ Answer"]
     end
     
-    style L fill:#e3f2fd,stroke:#1565c0
-    style S fill:#fff3e0,stroke:#e65100
-    style E fill:#fce4ec,stroke:#c62828
-    style ST fill:#f3e5f5,stroke:#7b1fa2
-    style Q fill:#fff3e0,stroke:#e65100
-    style R fill:#e3f2fd,stroke:#1565c0
-    style A fill:#f3e5f5,stroke:#7b1fa2
-    style G fill:#fce4ec,stroke:#c62828
-    style ANS fill:#e8f5e9,stroke:#2e7d32
+    style L fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style S fill:#fff3e0,stroke:#e65100,color:#000000
+    style E fill:#fce4ec,stroke:#c62828,color:#000000
+    style ST fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style Q fill:#fff3e0,stroke:#e65100,color:#000000
+    style R fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style A fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style G fill:#fce4ec,stroke:#c62828,color:#000000
+    style ANS fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## What You'll Learn
@@ -118,11 +118,11 @@ flowchart LR
     M --> S["🔧 StrOutputParser"]
     S --> A["✅ Answer"]
     
-    style DICT fill:#f3e5f5,stroke:#7b1fa2
-    style P fill:#fff3e0,stroke:#e65100
-    style M fill:#fce4ec,stroke:#c62828
-    style S fill:#e3f2fd,stroke:#1565c0
-    style A fill:#e8f5e9,stroke:#2e7d32
+    style DICT fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style P fill:#fff3e0,stroke:#e65100,color:#000000
+    style M fill:#fce4ec,stroke:#c62828,color:#000000
+    style S fill:#e3f2fd,stroke:#1565c0,color:#000000
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Why RAG Matters
