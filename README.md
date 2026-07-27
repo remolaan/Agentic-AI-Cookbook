@@ -40,17 +40,33 @@ quadrantChart
 
 ## Prerequisites
 
-- Python 3.12 (3.11 works too)
+- **Python ≥ 3.10** (3.12 recommended, 3.11 works)
 - A [DeepSeek API key](https://platform.deepseek.com) (free to sign up)
 
 ## Quick Start
 
 ```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
+# 1. Verify Python version
+python3 --version   # must be >= 3.10
+
+# 2. Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate    # Linux/macOS
+# .venv\Scripts\activate     # Windows
+
+# 3. Upgrade pip and install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
-cp .env.example .env   # add your OPENAI_API_KEY
+
+# 4. Set up your API key
+cp .env.example .env
+# Edit .env — replace sk-your-key-here with your real DeepSeek key
+
+# 5. Verify everything works
+python 00_setup/main.py
 ```
+
+> **Note:** Lesson 07's `JSONLoader` requires an extra package: `pip install jq` (optional — only if you use JSON documents).
 
 ## How a lesson works
 
@@ -223,6 +239,15 @@ python 01_hello_llm/main.py
 ```
 
 Every lesson is self-contained. The `README.md` in each folder explains the concepts, and `main.py` is ready to run.
+
+> **Troubleshooting:** If you get `sqlite3 >= 3.35.0 required` errors (lessons 09–11, 18, 56), run:
+> ```bash
+> pip install pysqlite3-binary
+> ```
+> This is already in `requirements.txt`. On some Linux systems you may also need to set:
+> ```bash
+> export LD_PRELOAD=/path/to/_sqlite3.so  # if using a custom Python build
+> ```
 
 ## Running the Gradio apps
 
