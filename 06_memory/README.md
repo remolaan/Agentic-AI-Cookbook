@@ -77,7 +77,7 @@ memory = ConversationBufferWindowMemory(k=2, return_messages=True)
 
 ```mermaid
 flowchart LR
-    subgraph Window k=2
+    subgraph "Window k=2"
         T2["Turn 2"] --> T3["Turn 3"] --> P["📝 Prompt<br/>(last 2 turns only)"]
         T1["Turn 1<br/>(dropped!)"] -.-> P
     end
