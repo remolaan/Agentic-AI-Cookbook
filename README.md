@@ -201,6 +201,12 @@ flowchart TD
 | 48 | `48_code_review_agent_project` | Style + security + logic review | `with_structured_output`, multi-tool |
 | 49 | `49_research_assistant_project` | Supervisor + 3 workers + memory | `Send` + `InMemoryStore` + compiler |
 | 50 | `50_agent_api_server_project` | FastAPI + Swarm + Streaming | `uvicorn`, agents as API endpoints |
+| 51 | `51_project` | RunnableBranch — conditional chains | `RunnableBranch`, predicate functions |
+| 52 | `52_project` | Batch Processing — `.batch()` | `.batch()`, `max_concurrency`, parallel |
+| 53 | `53_project` | Fallbacks & Retry | `.with_fallbacks()`, `.with_retry()`, `RunnableLambda` |
+| 54 | `54_project` | Configurable Runnables | `.configurable_fields()`, `.configurable_alternatives()` |
+| 55 | `55_project` | LangGraph Functional API | `@entrypoint`, `@task`, `.result()` |
+| 56 | `56_project` | Production-Grade Advanced RAG | Router + HyDE + rerank + verify + agentic RAG |
 
 ### 🎨 Bonus
 

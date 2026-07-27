@@ -48,6 +48,28 @@ def chat(state: MessagesState, config) -> dict:
 
 **State vs Store:** State is reset per `invoke()`. Store persists. Use state for conversation turns. Use store for user profiles, learned preferences, and cross-session data.
 
+### `BaseStore` — Abstract interface
+```python
+from langgraph.store.base import BaseStore
+
+class BaseStore:
+    def get(self, namespace, key): ...
+    def put(self, namespace, key, value): ...
+    def search(self, namespace_prefix, *, query=None): ...
+    def delete(self, namespace, key): ...
+```
+**What it is:** The abstract base class for all stores. `InMemoryStore` implements it. In production, you can implement custom stores (Redis, Postgres, etc.) by subclassing `BaseStore`.
+
+### `AsyncInMemoryStore`
+```python
+from langgraph.store.memory import AsyncInMemoryStore
+
+store = AsyncInMemoryStore()
+await store.aput(("users", "alice"), "prefs", {"theme": "dark"})
+result = await store.asearch(("users",))
+```
+**What it does:** Same as `InMemoryStore` but with async methods (`aput`, `aget`, `asearch`). Use inside `async def` nodes with `async` LangGraph.
+
 ## Key idea
 
 State is per-thread and resets. Store is global and persists. Use store for user profiles, preferences, and long-term facts.

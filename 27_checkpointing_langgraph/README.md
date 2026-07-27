@@ -41,6 +41,8 @@ result = graph.invoke({"messages": [HumanMessage("What's my name?")]}, config=co
 - `configurable: {"thread_id": "alice-1"}` — A **session identifier**. The checkpointer uses `thread_id` to organize checkpoints. Two calls with the same `thread_id` share history. Different `thread_id` = separate conversations.
 - `get_state(config)` — Fetches the current checkpoint. Returns a `StateSnapshot` with the `values` (state dict) and `next` (pending nodes). Useful for debugging or resuming.
 - `get_state_history(config)` — Lists all previous checkpoints for a thread. You can **replay** the conversation from any point.
+- `update_state(config, values, as_node=None)` — Manually **injects or overrides** state. Useful for seeding initial state, fixing mistakes, or skipping nodes during debugging. `as_node` controls which node's reducer is used for the update.
+- `SqliteSaver` — A **persistent** checkpointer that stores state in a SQLite file. Survives restarts. Same API as `MemorySaver`. Simple drop-in replacement for production that doesn't require PostgreSQL.
 
 **Without checkpointer:** Turn 2 doesn't know what happened in Turn 1.
 **With checkpointer:** Turn 2 sees the full history and remembers your name.
