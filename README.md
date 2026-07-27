@@ -12,6 +12,7 @@ flowchart LR
     P --> Q["16 Caching"] --> R["17 Streaming"] --> S["18 Deployment 🚢"]
     S --> T["20 Tool Calling 🛠️"] --> U["21 LangGraph 🔄"] --> V["22 Structured Output 📊"]
     V --> W["23-35 LangGraph Deep Dive 🔄"]
+    W --> X["36-50 Projects 🏗️"]
     
     style A fill:#e1f5fe,stroke:#01579b,color:#01579b
     style S fill:#e8f5e9,stroke:#2e7d32,color:#2e7d32
@@ -180,6 +181,26 @@ flowchart TD
 | 17 | **Streaming & Async** | Real-time | `async`, `astream`, `asyncio.gather` |
 | 18 | **Deployment** | REST API | FastAPI, Docker, uvicorn |
 | 19 | **Gradio UI** | Web interfaces | `gr.ChatInterface`, streaming, RAG UI |
+
+### 🏗️ Projects — Multi-Agent, Swarms & RAG (36–50)
+
+| # | Project | What it builds | Skills combined |
+|---|---------|---------------|-----------------|
+| 36 | `36_supervisor_worker_project` | Boss delegates to parallel workers | `Send`, subgraphs, conditional edges |
+| 37 | `37_debate_agents_project` | Pro vs Con vs Judge | Multi-state, parallel branching |
+| 38 | `38_agent_router_team_project` | Router → Specialist agents | `RouterRunnable`, `create_agent(name=)` |
+| 39 | `39_generator_verifier_project` | Generate → Verify → Retry loop | Quality loop, conditional edge |
+| 40 | `40_map_reduce_swarm_project` | N workers in parallel, collector | `Send` fan-out, `operator.add` reducer |
+| 41 | `41_dynamic_tool_swarm_project` | LLM decides worker count | Dynamic `Send`, tool dispatch |
+| 42 | `42_nested_agent_teams_project` | Agent as tool inside another agent | Subgraph-as-tool, nesting |
+| 43 | `43_swarm_approval_project` | Swarm with human approval gates | `interrupt()`, approval workflow |
+| 44 | `44_rag_query_router_project` | Route queries to best retriever | LLM router, multiple retrievers |
+| 45 | `45_multi_source_rag_project` | 3 sources in parallel + rerank | `Send` + reranking |
+| 46 | `46_self_correcting_rag_project` | Retrieve → Generate → Verify → Retry | Self-healing RAG loop |
+| 47 | `47_customer_support_bot_project` | Docs + tickets + refunds + handoff | Full prod: tools + RAG + HITL |
+| 48 | `48_code_review_agent_project` | Style + security + logic review | `with_structured_output`, multi-tool |
+| 49 | `49_research_assistant_project` | Supervisor + 3 workers + memory | `Send` + `InMemoryStore` + compiler |
+| 50 | `50_agent_api_server_project` | FastAPI + Swarm + Streaming | `uvicorn`, agents as API endpoints |
 
 ### 🎨 Bonus
 
