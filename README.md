@@ -151,6 +151,14 @@ flowchart TD
 | 16 | **Caching** | Save money | InMemory, SQLite cache |
 | 17 | **Streaming & Async** | Real-time | `async`, `astream`, `asyncio.gather` |
 | 18 | **Deployment** | REST API | FastAPI, Docker, uvicorn |
+| 19 | **Gradio UI** | Web interfaces | `gr.ChatInterface`, streaming, RAG UI |
+
+### 🎨 Bonus
+
+| File | What it does |
+|------|-------------|
+| `chat.py` | Terminal chatbot (no UI needed) |
+| `gradio_chat.py` | One-file Gradio web chatbot |
 
 ## Running a lesson
 
@@ -160,3 +168,15 @@ python 01_hello_llm/main.py
 ```
 
 Every lesson is self-contained. The `README.md` in each folder explains the concepts, and `main.py` is ready to run.
+
+## Running the Gradio apps
+
+```bash
+# Quick chat (one file, no lesson):
+python gradio_chat.py
+
+# Full 3-tab Gradio lesson:
+python 19_gradio/main.py
+```
+
+Then open `http://localhost:7860` in your browser.
