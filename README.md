@@ -11,6 +11,7 @@ flowchart LR
     K --> L["11 Advanced Retrieval"] --> M["12 Agents"] --> N["13 LCEL"] --> O["14 Callbacks"] --> P["15 Evaluation"]
     P --> Q["16 Caching"] --> R["17 Streaming"] --> S["18 Deployment 🚢"]
     S --> T["20 Tool Calling 🛠️"] --> U["21 LangGraph 🔄"] --> V["22 Structured Output 📊"]
+    V --> W["23-35 LangGraph Deep Dive 🔄"]
     
     style A fill:#e1f5fe,stroke:#01579b,color:#01579b
     style S fill:#e8f5e9,stroke:#2e7d32,color:#2e7d32
@@ -152,6 +153,24 @@ flowchart TD
 | 20 | **Tool Calling** | Function calling | `@tool`, `bind_tools()`, tool loop |
 | 21 | **LangGraph** | State graphs | `StateGraph`, `ToolNode`, agents |
 | 22 | **Structured Output** | Type-safe output | `.with_structured_output()`, Pydantic |
+
+### 🔄 LangGraph Deep Dive (23–35)
+
+| # | Lesson | What you build | Core concept |
+|---|--------|---------------|--------------|
+| 23 | **StateGraph Basics** | A→B→C node flow | `add_node`, `add_edge`, `compile` |
+| 24 | **MessagesState** | Chatbot with message list | `MessagesState`, `add_messages` reducer |
+| 25 | **Conditional Edges** | Sentiment router | `add_conditional_edges`, router function |
+| 26 | **ToolNode** | Agent with tools | `ToolNode`, `tools_condition`, ReAct loop |
+| 27 | **Checkpointing** | Multi-turn memory | `MemorySaver`, `thread_id`, `get_state` |
+| 28 | **Human-in-Loop** | Approval workflow | `interrupt()`, `Command(resume=...)` |
+| 29 | **Send API** | Parallel fan-out | `Send(node, arg)`, map-reduce |
+| 30 | **Long-Term Memory** | Cross-session facts | `InMemoryStore`, `put()`, `search()` |
+| 31 | **Streaming** | Live output | `stream()` modes: values, updates, messages |
+| 32 | **Error Handling** | Retry on failure | `RetryPolicy`, `recursion_limit` |
+| 33 | **Subgraphs** | Graph inside a graph | Nested `StateGraph` composition |
+| 34 | **Graph Visualization** | Mermaid diagrams | `get_graph().draw_mermaid()` |
+| 35 | **Command** | Multi-action return | `Command(goto=..., update=...)` |
 
 ### 🚢 Production — Ship It
 
