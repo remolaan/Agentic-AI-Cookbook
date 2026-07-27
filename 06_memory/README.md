@@ -11,69 +11,132 @@ flowchart TB
     subgraph "Without Memory"
         U1["👤 User: 'Hi, I'm Alice'"] --> L1["🤖 LLM"]
         L1 --> R1["💬 'Hello Alice!'"]
-        
         U2["👤 User: 'What's my name?'"] --> L2["🤖 LLM"]
         L2 --> R2["💬 'I don't know'"]
     end
-    
-    subgraph "With Memory"
-        U3["👤 User: 'Hi, I'm Alice'"] --> M1["📝 Memory<br/>(stores history)"]
-        M1 --> L3["🤖 LLM"]
+
+    subgraph "With Memory (RunnableWithMessageHistory)"
+        U3["👤 User: 'Hi, I'm Alice'"] --> MH1["📝 ChatMessageHistory"]
+        MH1 --> L3["🤖 LLM + history"]
         L3 --> R3["💬 'Hello Alice!'"]
-        
-        U4["👤 User: 'What's my name?'"] --> M2["📝 Memory<br/>(injects history)"]
-        M2 --> L4["🤖 LLM"]
+        U4["👤 User: 'What's my name?'"] --> MH2["📝 ChatMessageHistory"]
+        MH2 --> L4["🤖 LLM + history"]
         L4 --> R4["💬 'You said Alice!'"]
     end
-    
-    style L1 fill:#fce4ec
-    style L2 fill:#fce4ec
-    style L3 fill:#e8f5e9
-    style L4 fill:#e8f5e9
-    style M1 fill:#e3f2fd
-    style M2 fill:#e3f2fd
+
+    style L1 fill:#fce4ec,stroke:#c62828
+    style L2 fill:#fce4ec,stroke:#c62828
+    style L3 fill:#e8f5e9,stroke:#2e7d32
+    style L4 fill:#e8f5e9,stroke:#2e7d32
+    style MH1 fill:#e3f2fd,stroke:#1565c0
+    style MH2 fill:#e3f2fd,stroke:#1565c0
 ```
 
 ## What You'll Learn
 
 | Memory Type | What It Stores | When to Use |
 |-------------|---------------|-------------|
-| `ConversationBufferMemory` | Full conversation transcript | Short chats, small contexts |
-| `ConversationBufferWindowMemory` | Only the last N messages | Long conversations (saves tokens) |
-| `ConversationSummaryMemory` | AI-generated summary of old messages | Very long conversations |
-| `ConversationKGMemory` | Knowledge graph triples (entities + relations) | Fact-oriented conversations |
+| `ChatMessageHistory` + `RunnableWithMessageHistory` | Full conversation transcript | Short chats, small contexts |
+| Custom `WindowedChatMessageHistory` | Only the last N messages | Long conversations (saves tokens) |
+| Manual summarization | AI-generated summary of old messages | Very long conversations |
+
+## Modern Pattern: MessagesPlaceholder + RunnableWithMessageHistory
+
+The modern LangChain way uses two pieces working together:
+
+```mermaid
+flowchart LR
+    P["📝 Prompt with<br/>MessagesPlaceholder"] --> C["🔗 LCEL Chain<br/>prompt | llm | parser"]
+    C --> W["RunnableWithMessageHistory<br/>(wraps chain + history)"]
+    W --> H["📁 History Store<br/>ChatMessageHistory"]
+    H -.-> P
+    
+    style P fill:#e3f2fd,stroke:#1565c0
+    style W fill:#f3e5f5,stroke:#7b1fa2
+    style H fill:#fff3e0,stroke:#e65100
+```
+
+### Step 1: Add a history slot in your prompt
+
+```python
+from langchain_core.prompts import MessagesPlaceholder
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    MessagesPlaceholder(variable_name="history"),  # ← history injected here
+    ("human", "{input}"),
+])
+```
+
+### Step 2: Build an LCEL chain
+
+```python
+chain = prompt | llm | StrOutputParser()
+```
+
+### Step 3: Wrap with RunnableWithMessageHistory
+
+```python
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
+
+store = {}
+
+def get_session(session_id: str):
+    if session_id not in store:
+        store[session_id] = ChatMessageHistory()
+    return store[session_id]
+
+chain_with_history = RunnableWithMessageHistory(
+    chain,
+    get_session,
+    input_messages_key="input",
+    history_messages_key="history",
+)
+```
+
+### Step 4: Invoke with a session ID
+
+```python
+chain_with_history.invoke(
+    {"input": "Hi, I'm Alice."},
+    config={"configurable": {"session_id": "abc123"}},
+)
+```
 
 ## Code Walkthrough
 
-### 1. ConversationBufferMemory — Full Transcript
+### 1. Buffer Memory — Full History
 
-```python
-memory = ConversationBufferMemory(return_messages=True)
-chain = ConversationChain(llm=llm, memory=memory)
+Uses `ChatMessageHistory` (stores everything). The history grows with every turn.
 
-chain.invoke("Hi, I'm Alice.")   # → "Hello Alice!"
-chain.invoke("What's my name?")  # → "You said your name is Alice!"
+| Turn | History Size |
+|------|-------------|
+| 1 | 2 messages (H + AI) |
+| 2 | 4 messages |
+| N | N × 2 messages |
+
+```mermaid
+flowchart LR
+    T1["Turn 1<br/>Hi I'm Alice"] --> H1["📁 History<br/>H: Hi I'm Alice<br/>AI: Hello Alice!"]
+    T2["Turn 2<br/>What's my name?"] --> H2["📁 History<br/>H: Hi I'm Alice<br/>AI: Hello Alice!<br/>H: What's my name?<br/>AI: You're Alice!"]
+    
+    style H1 fill:#e3f2fd
+    style H2 fill:#e3f2fd
 ```
 
-**What it does:** Every turn, it appends the new exchange to the history. The growing transcript is injected into the prompt. The model sees the entire conversation.
+### 2. Window Memory — Sliding Window
 
-**Memory grows like this:**
-
-| Turn | Stored History |
-|------|---------------|
-| 1 | Human: "Hi, I'm Alice" → AI: "Hello Alice!" |
-| 2 | + Human: "What's my name?" → AI: "You're Alice!" |
-
-### 2. ConversationBufferWindowMemory — Sliding Window
+Custom `WindowedChatMessageHistory` keeps only the last `k` exchanges. Older messages are dropped.
 
 ```python
-memory = ConversationBufferWindowMemory(k=2, return_messages=True)
-#           ^ only remembers last 2 exchanges
+class WindowedChatMessageHistory(ChatMessageHistory):
+    def add_message(self, message):
+        super().add_message(message)
+        pairs = self.k * 2
+        if len(self.messages) > pairs:
+            self.messages = self.messages[-pairs:]
 ```
-
-**What it does:** Keeps only the most recent `k` exchanges. Older messages are dropped. This limits token usage and prevents the prompt from growing infinitely.
-
-**Best for:** Very long conversations where you only need recent context.
 
 ```mermaid
 flowchart LR
@@ -81,46 +144,48 @@ flowchart LR
         T2["Turn 2"] --> T3["Turn 3"] --> P["📝 Prompt<br/>(last 2 turns only)"]
         T1["Turn 1<br/>(dropped!)"] -.-> P
     end
-    style T1 fill:#fce4ec
-    style T2 fill:#e3f2fd
-    style T3 fill:#e3f2fd
+    style T1 fill:#fce4ec,stroke:#c62828
+    style T2 fill:#e3f2fd,stroke:#1565c0
+    style T3 fill:#e3f2fd,stroke:#1565c0
+    style P fill:#fff3e0,stroke:#e65100
 ```
 
-### 3. ConversationSummaryMemory — Summarized History
+### 3. Summary Memory — Manual Summarization
 
-```python
-memory = ConversationSummaryMemory(llm=llm, return_messages=True)
-```
-
-**What it does:** As the conversation grows, old messages are **summarized** by the LLM into a short paragraph. The summary is injected instead of the full transcript.
-
-**Before:** 20 long exchanges → **After:** "The user likes hiking and coffee, asked about mountains..."
-
-**Best for:** Saving tokens while preserving key information.
-
-## Key Concept: Memory = Prompt Injection
-
-Memory works by **modifying the prompt**. Before your message reaches the LLM, memory injects the history. The LLM never "remembers" — it just gets a longer prompt that includes past context.
+No built-in class for this in modern LangChain (it was removed). Instead, use a second LLM call to summarize periodically and feed the summary into the next prompt.
 
 ```mermaid
 flowchart LR
-    U["👤 User"] --> M["📝 Memory<br/>(adds history to prompt)"]
-    M --> P["📄 Augmented Prompt<br/>System + History + New Question"]
-    P --> L["🤖 LLM"]
-    L --> R["💬 Response"]
-    R --> M
+    A["Long conversation"] --> B["🤖 Summarizer LLM"]
+    B --> C["📄 Summary: 'User likes hiking and coffee'"]
+    C --> D["📝 Injected into next prompt"]
+    
+    style B fill:#f3e5f5,stroke:#7b1fa2
+    style C fill:#e3f2fd,stroke:#1565c0
+```
+
+## Key Concept: History is Just Prompt Injection
+
+Memory works by **modifying the prompt**. Before your message reaches the LLM, the history is injected via `MessagesPlaceholder`. The LLM never "remembers" — it just gets a longer prompt that includes past context.
+
+```mermaid
+flowchart LR
+    U["👤 User<br/>What's my name?"] --> M["📁 ChatMessageHistory<br/>appends to prompt"]
+    M --> P["📄 Augmented Prompt<br/>H: Hi I'm Alice<br/>AI: Hello!<br/>H: What's my name?"]
+    P --> L["🤖 LLM sees full history"]
+    L --> R["💬 'You're Alice!'"]
     
     style M fill:#e3f2fd,stroke:#1565c0
     style P fill:#fff3e0,stroke:#e65100
+    style L fill:#e8f5e9,stroke:#2e7d32
 ```
 
 ## Summary
 
-| Memory | Tokens Used | Best For |
-|--------|------------|----------|
-| Buffer | Grows forever | Short chats (demo, prototype) |
-| Window | Fixed size (k × message size) | Customer support, chatbots |
-| Summary | Compressed (summary size) | Long-running conversations |
-| KG | Entity triples | Fact extraction, Q&A |
+| Memory | Implementation | Tokens Used | Best For |
+|--------|---------------|-------------|----------|
+| Buffer | `ChatMessageHistory` | Grows forever | Short chats, demo |
+| Window | Custom `WindowedChatMessageHistory(k)` | Fixed (k × message size) | Customer support |
+| Summary | Manual LLM summarization | Compressed | Long-running conversations |
 
-**Rule of thumb:** Start with BufferMemory. If prompts get too long, switch to Window or Summary.
+**Rule of thumb:** Start with `ChatMessageHistory`. If prompts get too long, switch to windowed or summarization.

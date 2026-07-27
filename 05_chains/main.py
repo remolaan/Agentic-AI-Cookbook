@@ -1,65 +1,83 @@
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_classic.chains import LLMChain, SimpleSequentialChain, SequentialChain
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough, RunnableParallel
 
 load_dotenv()
 
 llm = ChatOpenAI(model="deepseek-chat", base_url="https://api.deepseek.com")
 
-# --- 1. LLMChain (classic) ---
+# ============================================================
+# 1. Basic Chain — prompt | llm | parser
+# ============================================================
 prompt = ChatPromptTemplate.from_messages([
     ("human", "Write a short {tone} poem about {subject}."),
 ])
-chain = LLMChain(llm=llm, prompt=prompt)
+chain = prompt | llm | StrOutputParser()
 response = chain.invoke({"tone": "funny", "subject": "a penguin learning to code"})
-print("=== LLMChain ===")
-print(response["text"])
+print("=== Basic Chain (prompt | llm) ===")
+print(response)
 print()
 
-# --- 2. SimpleSequentialChain ---
-chain_1 = LLMChain(
-    llm=llm,
-    prompt=ChatPromptTemplate.from_messages([
-        ("human", "Suggest a name for a {product}. Only output the name."),
-    ]),
-    output_key="name",
+# ============================================================
+# 2. Sequential Chain — pipe one chain's output into another
+# ============================================================
+name_chain = (
+    ChatPromptTemplate.from_messages([
+        ("human", "Suggest a name for a {product}. Only output the name, nothing else."),
+    ])
+    | llm
+    | StrOutputParser()
 )
-chain_2 = LLMChain(
-    llm=llm,
-    prompt=ChatPromptTemplate.from_messages([
-        ("human", "Write a tagline for a product called {name}."),
-    ]),
-    output_key="tagline",
+
+tagline_chain = (
+    ChatPromptTemplate.from_messages([
+        ("human", "Write a short tagline for a product called {name}."),
+    ])
+    | llm
+    | StrOutputParser()
 )
-seq_chain = SimpleSequentialChain(chains=[chain_1, chain_2])
+
+# Chain them: product → name → tagline
+seq_chain = name_chain | (lambda name: {"name": name}) | tagline_chain
 response = seq_chain.invoke("cat-themed coffee shop")
-print("=== SimpleSequentialChain ===")
-print("Name + Tagline:", response["output"])
+print("=== Sequential Chain (chained LCEL) ===")
+print(f"Tagline: {response}")
 print()
 
-# --- 3. SequentialChain (multi-input / multi-output) ---
-chain_1 = LLMChain(
-    llm=llm,
-    prompt=ChatPromptTemplate.from_messages([
+# ============================================================
+# 3. Multi-Output Chain — RunnableParallel
+# ============================================================
+dish_chain = (
+    ChatPromptTemplate.from_messages([
         ("human", "Create a detailed dish description for {cuisine} cuisine."),
-    ]),
-    output_key="dish_description",
+    ])
+    | llm
+    | StrOutputParser()
 )
-chain_2 = LLMChain(
-    llm=llm,
-    prompt=ChatPromptTemplate.from_messages([
+
+# Chain that takes dish_description and suggests wine
+wine_chain = (
+    ChatPromptTemplate.from_messages([
         ("human", "Suggest a wine pairing for this dish: {dish_description}"),
-    ]),
-    output_key="wine_pairing",
+    ])
+    | llm
+    | StrOutputParser()
 )
-multi_chain = SequentialChain(
-    chains=[chain_1, chain_2],
-    input_variables=["cuisine"],
-    output_variables=["dish_description", "wine_pairing"],
+
+# Build a multi-step pipeline
+multi_chain = (
+    RunnablePassthrough.assign(
+        dish_description=dish_chain
+    )
+    | RunnablePassthrough.assign(
+        wine_pairing=wine_chain
+    )
 )
+
 response = multi_chain.invoke({"cuisine": "Italian"})
-print("=== SequentialChain ===")
+print("=== Multi-Output Chain (assign) ===")
 print("Dish:", response["dish_description"])
 print()
 print("Wine:", response["wine_pairing"])
