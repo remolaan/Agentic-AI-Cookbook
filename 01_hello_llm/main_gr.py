@@ -86,8 +86,11 @@ def respond(message, history, system_prompt):
     if system_prompt.strip():
         history_openai.append({"role": "system", "content": system_prompt.strip()})
     for h in history:
-        history_openai.append({"role": "user", "content": h[0]})
-        history_openai.append({"role": "assistant", "content": h[1]})
+        if isinstance(h, dict):
+            history_openai.append({"role": h["role"], "content": h["content"]})
+        else:
+            history_openai.append({"role": "user", "content": h[0]})
+            history_openai.append({"role": "assistant", "content": h[1]})
     history_openai.append({"role": "user", "content": message})
 
     last_prompt = history_openai

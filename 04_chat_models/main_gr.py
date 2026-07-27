@@ -23,8 +23,11 @@ def chat(message, history, system_prompt):
     if system_prompt.strip():
         messages.append({"role": "system", "content": system_prompt.strip()})
     for h in history:
-        messages.append({"role": "user", "content": h[0]})
-        messages.append({"role": "assistant", "content": h[1]})
+        if isinstance(h, dict):
+            messages.append({"role": h["role"], "content": h["content"]})
+        else:
+            messages.append({"role": "user", "content": h[0]})
+            messages.append({"role": "assistant", "content": h[1]})
     messages.append({"role": "user", "content": message})
     last_prompt = messages
     response = llm.invoke(messages)
