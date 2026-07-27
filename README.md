@@ -156,21 +156,21 @@ flowchart TD
 
 ### 🔄 LangGraph Deep Dive (23–35)
 
-| # | Lesson | What you build | Core concept |
+| # | Folder | What you build | Core concept |
 |---|--------|---------------|--------------|
-| 23 | **StateGraph Basics** | A→B→C node flow | `add_node`, `add_edge`, `compile` |
-| 24 | **MessagesState** | Chatbot with message list | `MessagesState`, `add_messages` reducer |
-| 25 | **Conditional Edges** | Sentiment router | `add_conditional_edges`, router function |
-| 26 | **ToolNode** | Agent with tools | `ToolNode`, `tools_condition`, ReAct loop |
-| 27 | **Checkpointing** | Multi-turn memory | `MemorySaver`, `thread_id`, `get_state` |
-| 28 | **Human-in-Loop** | Approval workflow | `interrupt()`, `Command(resume=...)` |
-| 29 | **Send API** | Parallel fan-out | `Send(node, arg)`, map-reduce |
-| 30 | **Long-Term Memory** | Cross-session facts | `InMemoryStore`, `put()`, `search()` |
-| 31 | **Streaming** | Live output | `stream()` modes: values, updates, messages |
-| 32 | **Error Handling** | Retry on failure | `RetryPolicy`, `recursion_limit` |
-| 33 | **Subgraphs** | Graph inside a graph | Nested `StateGraph` composition |
-| 34 | **Graph Visualization** | Mermaid diagrams | `get_graph().draw_mermaid()` |
-| 35 | **Command** | Multi-action return | `Command(goto=..., update=...)` |
+| 23 | `23_stategraph_basics_langgraph` | A→B→C node flow | `add_node`, `add_edge`, `compile` |
+| 24 | `24_messagesstate_langgraph` | Chatbot with message list | `MessagesState`, `add_messages` reducer |
+| 25 | `25_conditional_edges_langgraph` | Sentiment router | `add_conditional_edges`, router function |
+| 26 | `26_toolnode_langgraph` | Agent with tools | `ToolNode`, `tools_condition`, ReAct loop |
+| 27 | `27_checkpointing_langgraph` | Multi-turn memory | `MemorySaver`, `thread_id`, `get_state` |
+| 28 | `28_human_in_loop_langgraph` | Approval workflow | `interrupt()`, `Command(resume=...)` |
+| 29 | `29_send_api_langgraph` | Parallel fan-out | `Send(node, arg)`, map-reduce |
+| 30 | `30_long_term_memory_langgraph` | Cross-session facts | `InMemoryStore`, `put()`, `search()` |
+| 31 | `31_streaming_langgraph` | Live output | `stream()` modes: values, updates, messages |
+| 32 | `32_error_handling_langgraph` | Retry on failure | `RetryPolicy`, `recursion_limit` |
+| 33 | `33_subgraphs_langgraph` | Graph inside a graph | Nested `StateGraph` composition |
+| 34 | `34_visualization_langgraph` | Mermaid diagrams | `get_graph().draw_mermaid()` |
+| 35 | `35_command_langgraph` | Multi-action return | `Command(goto=..., update=...)` |
 
 ### 🚢 Production — Ship It
 
