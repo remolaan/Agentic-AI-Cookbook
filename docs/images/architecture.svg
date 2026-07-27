@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="system-ui, sans-serif">
+  <rect width="900" height="340" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">System Architecture</text>
+
+  <!-- User -->
+  <rect x="50" y="100" width="120" height="60" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="110" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">👤 User</text>
+  <text x="110" y="143" text-anchor="middle" font-size="11" fill="#1565C0">Python script</text>
+
+  <!-- Arrow to API -->
+  <path d="M170 130 L220 130" stroke="#999" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- FastAPI / Gradio -->
+  <rect x="225" y="90" width="120" height="80" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="285" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">🌐 Interface</text>
+  <text x="285" y="136" text-anchor="middle" font-size="10" fill="#E65100">FastAPI / Gradio</text>
+  <text x="285" y="151" text-anchor="middle" font-size="10" fill="#E65100">CLI / Script</text>
+
+  <!-- Arrow to Core -->
+  <path d="M345 130 L395 130" stroke="#999" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LangChain Core -->
+  <rect x="400" y="55" width="150" height="150" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="475" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">🔗 LangChain</text>
+  <text x="405" y="103" font-size="10" fill="#2E7D32">▸ Prompts</text>
+  <text x="405" y="119" font-size="10" fill="#2E7D32">▸ Models / LLMs</text>
+  <text x="405" y="135" font-size="10" fill="#2E7D32">▸ Output Parsers</text>
+  <text x="405" y="151" font-size="10" fill="#2E7D32">▸ Memory</text>
+  <text x="405" y="167" font-size="10" fill="#2E7D32">▸ Document Loaders</text>
+  <text x="405" y="183" font-size="10" fill="#2E7D32">▸ Vector Stores</text>
+
+  <!-- Arrow to LangGraph -->
+  <path d="M475 205 L475 235 L620 235 L620 205" stroke="#999" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="548" y="230" text-anchor="middle" font-size="10" fill="#666">orchestrates</text>
+
+  <!-- LangGraph Core -->
+  <rect x="555" y="55" width="150" height="150" rx="10" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="630" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B1FA2">🔄 LangGraph</text>
+  <text x="560" y="103" font-size="10" fill="#7B1FA2">▸ StateGraph</text>
+  <text x="560" y="119" font-size="10" fill="#7B1FA2">▸ ToolNode</text>
+  <text x="560" y="135" font-size="10" fill="#7B1FA2">▸ Checkpointing</text>
+  <text x="560" y="151" font-size="10" fill="#7B1FA2">▸ Multi-Agent</text>
+  <text x="560" y="167" font-size="10" fill="#7B1FA2">▸ Human-in-Loop</text>
+  <text x="560" y="183" font-size="10" fill="#7B1FA2">▸ Streaming</text>
+
+  <!-- Arrow to Model -->
+  <path d="M550 130 L580 130" stroke="none"/>
+  <path d="M705 130 L755 130" stroke="#999" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LLM -->
+  <rect x="760" y="90" width="120" height="80" rx="10" fill="#FCE4EC" stroke="#C62828" stroke-width="2"/>
+  <text x="820" y="118" text-anchor="middle" font-size="14" font-weight="bold" fill="#C62828">🤖 LLM</text>
+  <text x="820" y="136" text-anchor="middle" font-size="10" fill="#C62828">DeepSeek / OpenAI</text>
+  <text x="820" y="151" text-anchor="middle" font-size="10" fill="#C62828">via ChatOpenAI</text>
+
+  <!-- External services below -->
+  <rect x="140" y="250" width="130" height="55" rx="8" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1.5"/>
+  <text x="205" y="273" text-anchor="middle" font-size="11" fill="#1565C0">📄 Documents</text>
+  <text x="205" y="290" text-anchor="middle" font-size="10" fill="#666">PDF, CSV, HTML, Wiki</text>
+
+  <rect x="310" y="250" width="130" height="55" rx="8" fill="#FFF3E0" stroke="#FFCC80" stroke-width="1.5"/>
+  <text x="375" y="273" text-anchor="middle" font-size="11" fill="#E65100">🗄️ Vector Store</text>
+  <text x="375" y="290" text-anchor="middle" font-size="10" fill="#666">Chroma / FAISS</text>
+
+  <rect x="480" y="250" width="130" height="55" rx="8" fill="#F3E5F5" stroke="#CE93D8" stroke-width="1.5"/>
+  <text x="545" y="273" text-anchor="middle" font-size="11" fill="#7B1FA2">💾 Checkpointer</text>
+  <text x="545" y="290" text-anchor="middle" font-size="10" fill="#666">MemorySaver</text>
+
+  <rect x="650" y="250" width="130" height="55" rx="8" fill="#FCE4EC" stroke="#EF9A9A" stroke-width="1.5"/>
+  <text x="715" y="273" text-anchor="middle" font-size="11" fill="#C62828">🔧 Tools</text>
+  <text x="715" y="290" text-anchor="middle" font-size="10" fill="#666">API / Calculator / Search</text>
+
+  <!-- Connected lines to services -->
+  <path d="M285 250 L285 210" stroke="#90CAF9" stroke-width="1.5" stroke-dasharray="4"/>
+  <path d="M375 250 L375 210" stroke="#FFCC80" stroke-width="1.5" stroke-dasharray="4"/>
+  <path d="M545 250 L545 210" stroke="#CE93D8" stroke-width="1.5" stroke-dasharray="4"/>
+  <path d="M715 250 L715 210" stroke="#EF9A9A" stroke-width="1.5" stroke-dasharray="4"/>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>

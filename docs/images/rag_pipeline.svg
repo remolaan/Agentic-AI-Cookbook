@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" font-family="system-ui, sans-serif">
+  <rect width="900" height="200" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#E65100">RAG Pipeline — Retrieval Augmented Generation</text>
+
+  <!-- Step 1: Load -->
+  <rect x="30" y="55" width="120" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="90" y="82" text-anchor="middle" font-size="28">📄</text>
+  <text x="90" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Load</text>
+  <text x="90" y="125" text-anchor="middle" font-size="10" fill="#666">TextLoader</text>
+  <text x="90" y="138" text-anchor="middle" font-size="10" fill="#666">WebBaseLoader</text>
+
+  <path d="M150 100 L180 100" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Step 2: Split -->
+  <rect x="185" y="55" width="120" height="90" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="245" y="82" text-anchor="middle" font-size="28">✂️</text>
+  <text x="245" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">Split</text>
+  <text x="245" y="125" text-anchor="middle" font-size="10" fill="#666">RecursiveCharacter</text>
+  <text x="245" y="138" text-anchor="middle" font-size="10" fill="#666">TextSplitter</text>
+
+  <path d="M305 100 L335 100" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Step 3: Embed -->
+  <rect x="340" y="55" width="120" height="90" rx="10" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="400" y="82" text-anchor="middle" font-size="28">🔢</text>
+  <text x="400" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#7B1FA2">Embed</text>
+  <text x="400" y="125" text-anchor="middle" font-size="10" fill="#666">Embeddings model</text>
+  <text x="400" y="138" text-anchor="middle" font-size="10" fill="#666">text → vectors</text>
+
+  <path d="M460 100 L490 100" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Step 4: Store -->
+  <rect x="495" y="55" width="120" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="555" y="82" text-anchor="middle" font-size="28">🗄️</text>
+  <text x="555" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Store</text>
+  <text x="555" y="125" text-anchor="middle" font-size="10" fill="#666">Chroma / FAISS</text>
+  <text x="555" y="138" text-anchor="middle" font-size="10" fill="#666">Vector database</text>
+
+  <path d="M615 100 L645 100" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Step 5: Retrieve -->
+  <rect x="650" y="55" width="110" height="90" rx="10" fill="#FCE4EC" stroke="#C62828" stroke-width="2"/>
+  <text x="705" y="82" text-anchor="middle" font-size="28">🔍</text>
+  <text x="705" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#C62828">Retrieve</text>
+  <text x="705" y="125" text-anchor="middle" font-size="10" fill="#666">Similarity</text>
+  <text x="705" y="138" text-anchor="middle" font-size="10" fill="#666">search</text>
+
+  <path d="M760 100 L790 100" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Step 6: Generate -->
+  <rect x="795" y="55" width="90" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="840" y="82" text-anchor="middle" font-size="28">🤖</text>
+  <text x="840" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Generate</text>
+  <text x="840" y="125" text-anchor="middle" font-size="10" fill="#666">LLM</text>
+  <text x="840" y="138" text-anchor="middle" font-size="10" fill="#666">answer</text>
+
+  <!-- Question input below -->
+  <rect x="350" y="165" width="200" height="28" rx="14" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5"/>
+  <text x="450" y="184" text-anchor="middle" font-size="12" fill="#E65100">❓ User Question → 🔍 Retrieve → 🤖 Answer</text>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>
