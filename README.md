@@ -10,6 +10,7 @@ flowchart LR
     F --> G["06 Memory"] --> H["07 Loaders"] --> I["08 Splitters"] --> J["09 Vector Stores"] --> K["10 RAG"]
     K --> L["11 Advanced Retrieval"] --> M["12 Agents"] --> N["13 LCEL"] --> O["14 Callbacks"] --> P["15 Evaluation"]
     P --> Q["16 Caching"] --> R["17 Streaming"] --> S["18 Deployment 🚢"]
+    S --> T["20 Tool Calling 🛠️"] --> U["21 LangGraph 🔄"] --> V["22 Structured Output 📊"]
     
     style A fill:#e1f5fe,stroke:#01579b,color:#01579b
     style S fill:#e8f5e9,stroke:#2e7d32,color:#2e7d32
@@ -143,6 +144,14 @@ flowchart TD
     style Q fill:#fff3e0,stroke:#e65100
     style R fill:#e8f5e9,stroke:#2e7d32
 ```
+
+### 🛠️ Modern — Tools & Graphs
+
+| # | Lesson | What you build | Core concept |
+|---|--------|---------------|--------------|
+| 20 | **Tool Calling** | Function calling | `@tool`, `bind_tools()`, tool loop |
+| 21 | **LangGraph** | State graphs | `StateGraph`, `ToolNode`, agents |
+| 22 | **Structured Output** | Type-safe output | `.with_structured_output()`, Pydantic |
 
 ### 🚢 Production — Ship It
 

@@ -2,7 +2,11 @@ from dotenv import load_dotenv
 from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
     CharacterTextSplitter,
+    PythonCodeTextSplitter,
+    MarkdownHeaderTextSplitter,
+    Language,
 )
+from langchain_core.documents import Document
 
 load_dotenv()
 
@@ -22,35 +26,101 @@ LangChain supports many model providers including OpenAI, Anthropic, and open-so
 
 It is written in Python and JavaScript/TypeScript."""
 
-# --- 1. RecursiveCharacterTextSplitter (recommended) ---
+# ============================================================
+# 1. RecursiveCharacterTextSplitter (recommended default)
+# ============================================================
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size=100,
-    chunk_overlap=20,
+    chunk_size=100, chunk_overlap=20,
     separators=["\n\n", "\n", ".", " "],
 )
 chunks = splitter.split_text(text)
 print("=== RecursiveCharacterTextSplitter ===")
-for i, chunk in enumerate(chunks):
-    print(f"  Chunk {i+1} ({len(chunk)} chars): {chunk[:60]}...")
-print(f"  Total: {len(chunks)} chunks")
+print(f"  {len(chunks)} chunks")
+for i, c in enumerate(chunks):
+    print(f"  Chunk {i+1}: {c[:50]}...")
 print()
 
-# --- 2. CharacterTextSplitter (simpler) ---
-splitter = CharacterTextSplitter(
-    chunk_size=80,
-    chunk_overlap=10,
-    separator="\n",
-)
-chunks = splitter.split_text(text)
+# ============================================================
+# 2. CharacterTextSplitter (simple)
+# ============================================================
+chunks = CharacterTextSplitter(chunk_size=80, chunk_overlap=10, separator="\n").split_text(text)
 print("=== CharacterTextSplitter ===")
-for i, chunk in enumerate(chunks):
-    print(f"  Chunk {i+1} ({len(chunk)} chars): {chunk[:50]}...")
-print(f"  Total: {len(chunks)} chunks")
+print(f"  {len(chunks)} chunks")
 print()
 
-# --- 3. Splitting Documents (not just strings) ---
-from langchain_core.documents import Document
+# ============================================================
+# 3. PythonCodeTextSplitter
+# ============================================================
+python_code = """def hello(name):
+    print(f"Hello, {name}!")
 
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+    def multiply(self, a, b):
+        return a * b
+
+result = Calculator().add(5, 3)
+hello("World")
+"""
+
+splitter = PythonCodeTextSplitter(chunk_size=50, chunk_overlap=0)
+chunks = splitter.split_text(python_code)
+print("=== PythonCodeTextSplitter ===")
+print(f"  {len(chunks)} chunks")
+for i, c in enumerate(chunks):
+    lines = c.strip().split("\n")
+    print(f"  Chunk {i+1}: {lines[0][:50]}...")
+print()
+
+# ============================================================
+# 4. MarkdownHeaderTextSplitter
+# ============================================================
+markdown = """# Chapter 1
+## Section 1.1
+This is content under section 1.1.
+
+## Section 1.2
+This is content under section 1.2 with more details.
+
+# Chapter 2
+## Section 2.1
+Content for section 2.1.
+
+### Subsection 2.1.1
+Deep content here.
+"""
+
+splitter = MarkdownHeaderTextSplitter(headers_to_split_on=[
+    ("#", "Header 1"),
+    ("##", "Header 2"),
+])
+chunks = splitter.split_text(markdown)
+print("=== MarkdownHeaderTextSplitter ===")
+print(f"  {len(chunks)} chunks")
+for c in chunks:
+    print(f"  [{c.metadata}] {c.page_content[:40]}...")
+print()
+
+# ============================================================
+# 5. Language enum — for split_text with language awareness
+# ============================================================
+splitter = RecursiveCharacterTextSplitter.from_language(
+    language=Language.PYTHON,
+    chunk_size=60,
+    chunk_overlap=0,
+)
+chunks = splitter.split_text(python_code)
+print("=== from_language (Python) ===")
+print(f"  {len(chunks)} chunks")
+for i, c in enumerate(chunks):
+    print(f"  Chunk {i+1}: {c.strip()[:50]}...")
+print()
+
+# ============================================================
+# 6. Splitting Documents (not just strings)
+# ============================================================
 docs = [Document(page_content=text, metadata={"source": "manual.md"})]
 splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=20)
 split_docs = splitter.split_documents(docs)

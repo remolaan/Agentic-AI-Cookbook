@@ -19,34 +19,13 @@ from dotenv import load_dotenv
 import gradio as gr
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
-# Store the last prompt and response so accordion panels can display them
+llm = ChatOpenAI(model="deepseek-chat", base_url="https://api.deepseek.com")
+
 last_prompt = []
 last_response = None
-
-
-def chat(message, history, system_prompt):
-    global last_prompt, last_response
-
-    llm = ChatOpenAI(model="deepseek-chat", base_url="https://api.deepseek.com")
-
-    messages = []
-    if system_prompt.strip():
-        messages.append(SystemMessage(content=system_prompt.strip()))
-    for h in history:
-        messages.append(HumanMessage(content=h[0]))
-        messages.append(AIMessage(content=h[1]))
-    messages.append(HumanMessage(content=message))
-
-    last_prompt = messages
-
-    response = llm.invoke(messages)
-    last_response = response
-
-    return response.content
 
 
 def get_raw_prompt():
@@ -54,9 +33,9 @@ def get_raw_prompt():
         return "No prompt sent yet."
     lines = []
     for m in last_prompt:
-        role = type(m).__name__.replace("Message", "")
+        role = m["role"].upper()
         lines.append(f"[{role}]")
-        lines.append(m.content)
+        lines.append(m["content"])
         lines.append("")
     return "\n".join(lines)
 
@@ -96,11 +75,34 @@ def get_token_usage():
     return "Token usage not available from this provider."
 
 
+def refresh_debug():
+    return get_raw_prompt(), get_raw_response(), get_token_usage()
+
+
+def respond(message, history, system_prompt):
+    global last_prompt, last_response
+
+    history_openai = []
+    if system_prompt.strip():
+        history_openai.append({"role": "system", "content": system_prompt.strip()})
+    for h in history:
+        history_openai.append({"role": "user", "content": h[0]})
+        history_openai.append({"role": "assistant", "content": h[1]})
+    history_openai.append({"role": "user", "content": message})
+
+    last_prompt = history_openai
+
+    response = llm.invoke(history_openai)
+    last_response = response
+
+    return response.content
+
+
 with gr.Blocks(title="LangChain — Hello LLM") as app:
     gr.Markdown("# LangChain — 01 Hello LLM")
     gr.Markdown(
         "Chat with DeepSeek via LangChain. "
-        "Use the accordions below to inspect the raw data flowing in and out."
+        "The debug panels auto-populate after each message."
     )
 
     with gr.Accordion("⚙️ Prompt Settings", open=False):
@@ -112,7 +114,7 @@ with gr.Blocks(title="LangChain — Hello LLM") as app:
         )
 
     chatbot = gr.ChatInterface(
-        fn=chat,
+        fn=respond,
         additional_inputs=[system_prompt],
         title="💬 Chat",
         description="Type a message and see the AI respond.",
@@ -144,9 +146,6 @@ with gr.Blocks(title="LangChain — Hello LLM") as app:
 
     refresh_btn = gr.Button("🔄 Refresh Debug Panels", variant="secondary")
 
-    def refresh_debug():
-        return get_raw_prompt(), get_raw_response(), get_token_usage()
-
     refresh_btn.click(
         fn=refresh_debug,
         inputs=[],
@@ -160,4 +159,6 @@ with gr.Blocks(title="LangChain — Hello LLM") as app:
     )
 
 if __name__ == "__main__":
-    app.launch(theme="ocean")
+    import sys
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 7860
+    app.launch(server_port=port, server_name="0.0.0.0", theme="ocean")
